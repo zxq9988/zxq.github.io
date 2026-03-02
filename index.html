@@ -148,6 +148,59 @@
   .detail-source{display:inline-flex;align-items:center;gap:8px;font-size:12px;color:var(--sage);text-decoration:none;border:1px solid var(--sage-light);padding:8px 18px;border-radius:2px;transition:all .2s;}
   .detail-source:hover{background:var(--sage-pale);}
 
+  /* 分析模块 */
+  .analysis-tabs{display:flex;gap:0;margin:32px 0 0;border:1px solid var(--border);border-radius:4px;overflow:hidden;background:white;}
+  .analysis-tab{flex:1;padding:11px 0;text-align:center;font-size:11px;letter-spacing:.08em;cursor:pointer;border:none;background:transparent;color:var(--mid);font-family:'Noto Sans SC',sans-serif;transition:all .2s;border-right:1px solid var(--border);}
+  .analysis-tab:last-child{border-right:none;}
+  .analysis-tab.active{background:var(--sage);color:white;}
+  .analysis-content{padding:24px;background:var(--cream);border:1px solid var(--border);border-top:none;border-radius:0 0 4px 4px;font-size:14px;line-height:1.9;color:var(--mid);min-height:80px;}
+  .analysis-label{font-size:10px;letter-spacing:.15em;text-transform:uppercase;color:var(--sage);margin-bottom:12px;font-family:'DM Mono',monospace;}
+  .analysis-empty{color:var(--soft);font-style:italic;font-size:13px;}
+
+  /* 评论区 */
+  .comment-section{margin-top:40px;padding-top:32px;border-top:1px solid var(--border);}
+  .comment-section-title{font-family:'Cormorant Garamond',serif;font-size:22px;font-weight:300;margin-bottom:20px;}
+  .comment-input-wrap{background:white;border:1px solid var(--border);border-radius:4px;overflow:hidden;margin-bottom:24px;transition:border-color .25s;}
+  .comment-input-wrap:focus-within{border-color:var(--sage);}
+  .comment-cat-bar{display:flex;gap:0;border-bottom:1px solid var(--border);}
+  .comment-cat-btn{font-size:11px;padding:8px 14px;border:none;background:transparent;cursor:pointer;color:var(--soft);font-family:'Noto Sans SC',sans-serif;transition:all .2s;border-right:1px solid var(--border);}
+  .comment-cat-btn:last-child{border-right:none;}
+  .comment-cat-btn.active{color:var(--sage);background:var(--sage-pale);}
+  .comment-textarea{width:100%;border:none;outline:none;padding:14px 16px;font-family:'Noto Sans SC',sans-serif;font-size:13px;color:var(--charcoal);resize:none;min-height:80px;background:white;}
+  .comment-textarea::placeholder{color:var(--soft);}
+  .comment-actions{display:flex;justify-content:space-between;align-items:center;padding:10px 16px;background:var(--cream);}
+  .comment-anon{display:flex;align-items:center;gap:6px;font-size:12px;color:var(--soft);cursor:pointer;}
+  .comment-anon input{accent-color:var(--sage);}
+  .comment-submit{font-size:12px;padding:7px 20px;background:var(--sage);color:white;border:none;border-radius:2px;cursor:pointer;font-family:'Noto Sans SC',sans-serif;transition:background .2s;}
+  .comment-submit:hover{background:#6a9070;}
+
+  .comment-sort{display:flex;gap:16px;margin-bottom:16px;align-items:center;}
+  .comment-sort-label{font-size:11px;color:var(--soft);}
+  .sort-btn{font-size:11px;color:var(--soft);background:none;border:none;cursor:pointer;padding:0;transition:color .2s;}
+  .sort-btn.active,.sort-btn:hover{color:var(--sage);}
+
+  .comment-item{padding:18px 0;border-bottom:1px solid var(--border);}
+  .comment-item:last-child{border-bottom:none;}
+  .comment-header{display:flex;align-items:center;gap:10px;margin-bottom:8px;}
+  .comment-avatar{width:32px;height:32px;border-radius:50%;background:var(--sage-pale);display:flex;align-items:center;justify-content:center;font-size:14px;flex-shrink:0;}
+  .comment-user{font-size:13px;font-weight:400;color:var(--charcoal);}
+  .comment-time{font-size:11px;color:var(--soft);margin-left:auto;}
+  .comment-cat-tag{font-size:9px;padding:2px 8px;border-radius:100px;letter-spacing:.08em;}
+  .cat-tag-design{background:#e8f0e8;color:var(--sage);}
+  .cat-tag-tech{background:#e4eef4;color:var(--teal);}
+  .cat-tag-critique{background:#fdf0e8;color:#c4855a;}
+  .cat-tag-question{background:#f0edf8;color:#7a6aaa;}
+  .cat-tag-general{background:var(--cream);color:var(--soft);}
+  .comment-body{font-size:13px;line-height:1.8;color:var(--mid);margin-bottom:10px;padding-left:42px;}
+  .comment-footer{display:flex;gap:16px;padding-left:42px;align-items:center;}
+  .like-btn{display:flex;align-items:center;gap:5px;font-size:12px;color:var(--soft);background:none;border:none;cursor:pointer;transition:color .2s;padding:0;}
+  .like-btn:hover,.like-btn.liked{color:var(--sage);}
+  .reply-btn{font-size:12px;color:var(--soft);background:none;border:none;cursor:pointer;transition:color .2s;padding:0;}
+  .reply-btn:hover{color:var(--sage);}
+  .comment-replies{padding-left:42px;margin-top:12px;}
+  .comment-reply-item{padding:12px 0 12px 16px;border-left:2px solid var(--border);margin-bottom:8px;}
+  .no-comments{padding:32px 0;text-align:center;color:var(--soft);font-size:13px;}
+
   footer{background:var(--cream);border-top:1px solid var(--border);padding:64px 48px 40px;}
   .footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:48px;margin-bottom:48px;}
   .footer-desc{font-size:13px;color:var(--soft);line-height:1.8;margin-top:14px;}
@@ -489,10 +542,34 @@ function renderResults(label, results) {
 }
 
 // ── 详情 ──────────────────────────────────────────
+let currentCaseId = null;
+let currentAnalysisTab = 'design';
+let currentCommentCat = 'general';
+let currentSort = 'likes';
+
+const ANALYSIS_TABS = [
+  { key:'design',   label:'设计手法' },
+  { key:'tech',     label:'技术分析' },
+  { key:'drawings', label:'图纸解读' },
+];
+const COMMENT_CATS = [
+  { key:'general',  label:'综合讨论' },
+  { key:'design',   label:'设计手法' },
+  { key:'tech',     label:'技术解析' },
+  { key:'critique', label:'批判观点' },
+  { key:'question', label:'提问' },
+];
+const CAT_TAG_CLASS = { general:'cat-tag-general', design:'cat-tag-design', tech:'cat-tag-tech', critique:'cat-tag-critique', question:'cat-tag-question' };
+const CAT_TAG_LABEL = { general:'综合', design:'设计手法', tech:'技术', critique:'批判', question:'提问' };
+
 async function openDetail(id) {
   openPanel('loading');
+  currentCaseId = id;
+  currentAnalysisTab = 'design';
+
   const {data:c} = await sb.from('cases').select('*').eq('id',id).single();
   if (!c) return;
+
   document.getElementById('panelTitle').textContent = '案例详情';
   document.getElementById('panelBody').innerHTML = `
     <div class="detail-cover">${thumb(c,72)}</div>
@@ -510,7 +587,201 @@ async function openDetail(id) {
     ${c.description?`<div class="detail-desc">${c.description}</div>`:''}
     <div class="detail-tags">${(c.tags||[]).map(t=>`<span class="card-tag">${t}</span>`).join('')}</div>
     ${c.source_url?`<a class="detail-source" href="${c.source_url}" target="_blank">查看原始来源 →</a>`:''}
+
+    <!-- 分析模块 -->
+    <div class="analysis-tabs" id="analysisTabs">
+      ${ANALYSIS_TABS.map(t=>`
+        <button class="analysis-tab ${t.key===currentAnalysisTab?'active':''}"
+          onclick="switchAnalysis('${t.key}',${JSON.stringify({design:c.analysis_design,tech:c.analysis_tech,drawings:c.analysis_drawings})})">
+          ${t.label}
+        </button>`).join('')}
+    </div>
+    <div class="analysis-content" id="analysisContent">
+      ${renderAnalysisContent(currentAnalysisTab, {design:c.analysis_design, tech:c.analysis_tech, drawings:c.analysis_drawings})}
+    </div>
+    ${c.analysis_author?`<div style="font-size:11px;color:var(--soft);margin-top:8px;font-family:'DM Mono',monospace">分析撰写：${c.analysis_author}</div>`:''}
+
+    <!-- 评论区 -->
+    <div class="comment-section">
+      <div class="comment-section-title">讨论区 <span id="commentCount" style="font-size:14px;color:var(--soft)"></span></div>
+
+      <!-- 发评论 -->
+      <div class="comment-input-wrap">
+        <div class="comment-cat-bar">
+          ${COMMENT_CATS.map(cat=>`
+            <button class="comment-cat-btn ${cat.key==='general'?'active':''}"
+              onclick="selectCommentCat(this,'${cat.key}')">${cat.label}</button>`).join('')}
+        </div>
+        <textarea class="comment-textarea" id="commentText" placeholder="分享你对这个案例的看法、分析或问题…" rows="3"></textarea>
+        <div class="comment-actions">
+          <label class="comment-anon"><input type="checkbox" id="anonCheck"> 匿名发布</label>
+          <button class="comment-submit" onclick="submitComment('${id}')">发布</button>
+        </div>
+      </div>
+
+      <!-- 排序 -->
+      <div class="comment-sort">
+        <span class="comment-sort-label">排序：</span>
+        <button class="sort-btn active" id="sortLikes" onclick="switchSort('likes','${id}')">最多点赞</button>
+        <button class="sort-btn" id="sortNew" onclick="switchSort('new','${id}')">最新发布</button>
+      </div>
+
+      <!-- 评论列表 -->
+      <div id="commentList"><div class="loading-state"><div class="loading-spinner"></div></div></div>
+    </div>
   `;
+
+  loadComments(id);
+}
+
+function renderAnalysisContent(tab, data) {
+  const content = tab==='design' ? data.design : tab==='tech' ? data.tech : data.drawings;
+  if (!content) return `<div class="analysis-empty">暂无${ANALYSIS_TABS.find(t=>t.key===tab).label}内容，欢迎在评论区补充你的见解。</div>`;
+  return `<div class="analysis-label">${ANALYSIS_TABS.find(t=>t.key===tab).label}</div>${content}`;
+}
+
+function switchAnalysis(tab, data) {
+  currentAnalysisTab = tab;
+  document.querySelectorAll('.analysis-tab').forEach(b=>b.classList.remove('active'));
+  event.target.classList.add('active');
+  document.getElementById('analysisContent').innerHTML = renderAnalysisContent(tab, data);
+}
+
+function selectCommentCat(btn, cat) {
+  currentCommentCat = cat;
+  document.querySelectorAll('.comment-cat-btn').forEach(b=>b.classList.remove('active'));
+  btn.classList.add('active');
+}
+
+function switchSort(sort, caseId) {
+  currentSort = sort;
+  document.getElementById('sortLikes').classList.toggle('active', sort==='likes');
+  document.getElementById('sortNew').classList.toggle('active', sort==='new');
+  loadComments(caseId);
+}
+
+// ── 评论加载 ──────────────────────────────────────
+async function loadComments(caseId) {
+  const list = document.getElementById('commentList');
+  if (!list) return;
+  list.innerHTML = `<div class="loading-state"><div class="loading-spinner"></div></div>`;
+
+  let q = sb.from('comments').select('*').eq('case_id', caseId).is('parent_id', null);
+  q = currentSort==='likes' ? q.order('like_count',{ascending:false}) : q.order('created_at',{ascending:false});
+
+  const {data:comments, count} = await q;
+
+  // 更新评论数
+  const countEl = document.getElementById('commentCount');
+  if (countEl) countEl.textContent = `(${comments?.length||0})`;
+
+  if (!comments?.length) {
+    list.innerHTML = `<div class="no-comments">暂无评论，来发表第一条见解吧</div>`;
+    return;
+  }
+
+  // 加载每条评论的回复
+  const ids = comments.map(c=>c.id);
+  const {data:replies} = await sb.from('comments').select('*').in('parent_id', ids).order('created_at');
+  const replyMap = {};
+  (replies||[]).forEach(r=>{ if(!replyMap[r.parent_id]) replyMap[r.parent_id]=[]; replyMap[r.parent_id].push(r); });
+
+  list.innerHTML = comments.map(c=>renderComment(c, replyMap[c.id]||[])).join('');
+}
+
+function renderComment(c, replies=[]) {
+  const timeStr = new Date(c.created_at).toLocaleDateString('zh-CN',{month:'short',day:'numeric'});
+  const userName = c.is_anonymous ? '匿名用户' : (c.user_id ? '用户' : '访客');
+  const avatar   = c.is_anonymous ? '👤' : '🎓';
+  return `
+  <div class="comment-item">
+    <div class="comment-header">
+      <div class="comment-avatar">${avatar}</div>
+      <span class="comment-user">${userName}</span>
+      <span class="comment-cat-tag ${CAT_TAG_CLASS[c.category]||'cat-tag-general'}">${CAT_TAG_LABEL[c.category]||'综合'}</span>
+      <span class="comment-time">${timeStr}</span>
+    </div>
+    <div class="comment-body">${escHtml(c.content)}</div>
+    <div class="comment-footer">
+      <button class="like-btn" onclick="likeComment('${c.id}',this)">
+        ♡ <span>${c.like_count||0}</span>
+      </button>
+      <button class="reply-btn" onclick="toggleReplyBox('${c.id}')">回复</button>
+    </div>
+    ${replies.length?`
+    <div class="comment-replies">
+      ${replies.map(r=>`
+        <div class="comment-reply-item">
+          <div class="comment-header">
+            <div class="comment-avatar" style="width:26px;height:26px;font-size:12px">${r.is_anonymous?'👤':'🎓'}</div>
+            <span class="comment-user" style="font-size:12px">${r.is_anonymous?'匿名用户':'访客'}</span>
+            <span class="comment-time">${new Date(r.created_at).toLocaleDateString('zh-CN',{month:'short',day:'numeric'})}</span>
+          </div>
+          <div class="comment-body" style="padding-left:34px;font-size:12px">${escHtml(r.content)}</div>
+        </div>`).join('')}
+    </div>`:''}
+    <div id="replyBox-${c.id}" style="display:none;padding-left:42px;margin-top:8px">
+      <textarea style="width:100%;border:1px solid var(--border);border-radius:3px;padding:10px;font-family:'Noto Sans SC',sans-serif;font-size:12px;outline:none;resize:none" rows="2" placeholder="回复这条评论…" id="replyText-${c.id}"></textarea>
+      <button onclick="submitReply('${currentCaseId}','${c.id}')" style="margin-top:6px;font-size:11px;padding:5px 16px;background:var(--sage);color:white;border:none;border-radius:2px;cursor:pointer">发送回复</button>
+    </div>
+  </div>`;
+}
+
+function toggleReplyBox(id) {
+  const box = document.getElementById(`replyBox-${id}`);
+  if (box) { box.style.display = box.style.display==='none'?'block':'none'; }
+}
+
+function escHtml(str) {
+  return (str||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+}
+
+// ── 发布评论 ──────────────────────────────────────
+async function submitComment(caseId) {
+  const text = document.getElementById('commentText')?.value?.trim();
+  if (!text) return;
+  const isAnon = document.getElementById('anonCheck')?.checked;
+
+  const {error} = await sb.from('comments').insert({
+    case_id: caseId,
+    content: text,
+    category: currentCommentCat,
+    is_anonymous: isAnon,
+  });
+
+  if (!error) {
+    document.getElementById('commentText').value = '';
+    await loadComments(caseId);
+  } else {
+    alert('发布失败，请稍后再试');
+  }
+}
+
+async function submitReply(caseId, parentId) {
+  const text = document.getElementById(`replyText-${parentId}`)?.value?.trim();
+  if (!text) return;
+
+  const {error} = await sb.from('comments').insert({
+    case_id: caseId,
+    parent_id: parentId,
+    content: text,
+    category: 'general',
+    is_anonymous: false,
+  });
+
+  if (!error) {
+    document.getElementById(`replyText-${parentId}`).value = '';
+    await loadComments(caseId);
+  }
+}
+
+async function likeComment(commentId, btn) {
+  // 乐观更新 UI
+  btn.classList.add('liked');
+  const span = btn.querySelector('span');
+  span.textContent = parseInt(span.textContent) + 1;
+
+  await sb.from('comments').update({ like_count: parseInt(span.textContent) }).eq('id', commentId);
 }
 
 // ── 筛选 ──────────────────────────────────────────
